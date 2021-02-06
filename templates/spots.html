@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FoodscapeLA</title>
-</head>
-<body>
+{% extends "base.html" %}
+{%block content %}
+
+    <h2>I'm extending the base template</h2>
+
     {% for spot in spots %}
         {{ spot.spot_name }}<br>
         {{ spot.category_name }}<br>
@@ -14,5 +11,5 @@
         {{ spot.recommend }}<br>
         {{ spot.visit_date }}<br>
     {% endfor %}
-</body>
-</html>
+
+{% endblock %}
