@@ -1,6 +1,42 @@
 {% extends "base.html" %}
 {%block content %}
 
+    
+    <!--slider-->
+    <div class="slider">
+    <ul class="slides">
+      <li>
+        <img src="https://rochestermom.com/wp-content/uploads/2019/04/photo-1579888944880-d98341245702.jpg"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
+        <div class="caption left-align">
+          <h3>Left Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
+        <div class="caption right-align">
+          <h3>Right Aligned Caption</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+      <li>
+        <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
+        <div class="caption center-align">
+          <h3>This is our big Tagline!</h3>
+          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+    <!--spots collapsible-->
     <ul class="collapsible popout">
         {% for spot in spots %}
         <li>
@@ -13,8 +49,18 @@
                 {% endif %}
             </div>
             <div class="collapsible-body">
-                <strong>{{ spot.category_name }}</strong>
-                <p>{{ spot.address }}</p>
+                <p>
+                    <strong>Type of Cuisine:</strong> {{ spot.category_name }} <br>
+                </p>
+                <p>
+                    <strong>Address:</strong> {{ spot.address }} <br>
+                </p>
+                <p>
+                    <strong>Description & What's Good Here:</strong><br>{{ spot.whats_good }}
+                </p>
+                <p>
+                    <strong>Last Visited:</strong> {{ spot.visit_date }}
+                </p>
             </div>
         </li>
         {% endfor %}
