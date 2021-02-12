@@ -21,7 +21,7 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/get_spots")
 def get_spots():
-    spots = mongo.db.spots.find()
+    spots = list(mongo.db.spots.find())
     return render_template("spots.html", spots=spots)
 
 
