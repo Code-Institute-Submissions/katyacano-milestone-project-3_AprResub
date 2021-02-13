@@ -1,4 +1,7 @@
 
+.brand-logo {
+    font-family: 'Pathway Gothic One', sans-serif;
+}
 
 .text-shadow {
     text-shadow: 2px 2px 2px rgb(0, 0, 0, 0.5);
@@ -10,4 +13,8 @@
 
 .slider {
     margin-top: 25px;
+}
+
+.small-tagline {
+    background-color: rgba(27, 27, 27, 0.692);
 }
