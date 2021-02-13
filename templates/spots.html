@@ -1,41 +1,40 @@
 {% extends "base.html" %}
-{%block content %}
+{% block content %}
 
-    
-    <!--slider-->
+     <!--slider-->
     <div class="slider">
     <ul class="slides">
       <li>
-        <img src="https://rochestermom.com/wp-content/uploads/2019/04/photo-1579888944880-d98341245702.jpg"> <!-- random image -->
+        <img src="{{ url_for('static', filename='images/tacos.jpg') }}"> 
         <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          <h3>LA is a culinary mecca</h3>
+          <h5 class="light white-text text-lighten-3">A salad bowl and melting pot all in one!</h5>
         </div>
       </li>
       <li>
-        <img src="https://lorempixel.com/580/250/nature/2"> <!-- random image -->
+        <img src="{{ url_for('static', filename='images/restaurant-patio.jpg') }}"> 
         <div class="caption left-align">
-          <h3>Left Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          <h3>Cuisine from almost every part of the world</h3>
+          <h5 class="light white-text text-lighten-3">From the traditional to the most unique fusion.</h5>
         </div>
       </li>
       <li>
-        <img src="https://lorempixel.com/580/250/nature/3"> <!-- random image -->
+        <img src="{{ url_for('static', filename='images/burgers.jpg') }}"> 
         <div class="caption right-align">
-          <h3>Right Aligned Caption</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          <h3>So many culinary experiences</h3>
+          <h5 class="light white-text text-lighten-3">Right outside your front door.</h5>
         </div>
       </li>
       <li>
-        <img src="https://lorempixel.com/580/250/nature/4"> <!-- random image -->
+        <img src="{{ url_for('static', filename='images/foodtruck.jpg') }}"> 
         <div class="caption center-align">
-          <h3>This is our big Tagline!</h3>
-          <h5 class="light grey-text text-lighten-3">Here's our small slogan.</h5>
+          <h3>What will you discover next?</h3>
+          <h5 class="light white-text text-lighten-3">Come out and explore with FoodscapeLA.</h5>
         </div>
       </li>
     </ul>
   </div>
-
+   
     <!--spots collapsible-->
     <ul class="collapsible popout">
         {% for spot in spots %}
