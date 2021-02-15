@@ -99,8 +99,23 @@ def logout():
     return redirect(url_for("login"))
 
 
-@app.route("/add_spot")
+@app.route("/add_spot", methods=["GET", "POST"])
 def add_spot():
+    if request.method == "POST":
+        recommend = "on" if request.form.get("recommend") else "off"
+        spot = {
+            "category_name": request.form.get("category_name"),
+            "spot_name": request.form.get("spot_name"),
+            "address": request.form.get("address"),
+            "visit_date": request.form.get("visit_date"),
+            "whats_good": request.form.get("whats_good"),
+            "recommend": recommend,
+            "created_by": session["user"]
+        }
+        mongo.db.spots.insert_one(spot)
+        flash("Spot Successfully Added")
+        return redirect(url_for("get_spots"))
+
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("add_spot.html", categories=categories)
 
