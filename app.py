@@ -101,7 +101,8 @@ def logout():
 
 @app.route("/add_spot")
 def add_spot():
-    return render_template("add_spot.html")
+    categories = mongo.db.categories.find().sort("category_name", 1)
+    return render_template("add_spot.html", categories=categories)
 
 
 if __name__ == "__main__":
