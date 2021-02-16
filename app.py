@@ -135,13 +135,17 @@ def edit_spot(spot_id):
         }
         mongo.db.spots.update({"_id": ObjectId(spot_id)}, submit)
         flash("Spot Successfully Edited")
-        
 
     spot = mongo.db.spots.find_one({"_id": ObjectId(spot_id)})
-
     categories = mongo.db.categories.find().sort("category_name", 1)
     return render_template("edit_spot.html", spot=spot, categories=categories)
 
+
+@app.route("/delete_spot/<spot_id>")
+def delete_spot(spot_id):
+    mongo.db.spots.remove({"_id": ObjectId(spot_id)})
+    flash("Spot Successfully Deleted")
+    return redirect(url_for("get_spots"))
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
