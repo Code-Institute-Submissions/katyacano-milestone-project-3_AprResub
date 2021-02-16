@@ -18,3 +18,12 @@
 .small-tagline {
     background-color: rgba(27, 27, 27, 0.692);
 }
+
+.btn-small {
+    margin: 5px;
+}
+
+.collapsible-header .col strong {
+    margin: 5px;
+    line-height: 42px;
+}

@@ -40,24 +40,33 @@
         {% for spot in spots %}
         <li>
             <div class="collapsible-header white-text orange darken-4 text-shadow">
-                <i class="fas fa-caret-down"></i>
-                <strong>{{ spot.spot_name }}</strong>
-                {% if spot.recommend == "on" %}
-                    <i class="fas fa-thumbs-up white-text text-lighten-2 tooltipped"
-                        data-position="right" data-tooltip="Highly Recommend"></i>
-                {% endif %}
+                <div class="col s3">
+                    <i class="fas fa-caret-down"></i>
+                    <a href="" class="btn-small grey accent-4">Edit</a>
+                </div>
+                <div class="col s9">
+                    <strong>{{ spot.spot_name }}</strong>
+                    {% if spot.recommend == "on" %}
+                        <i class="fas fa-thumbs-up white-text text-lighten-2 tooltipped" data-position="right"
+                            data-tooltip="Highly Recommend"></i>
+                    {% endif %}
+                </div>
             </div>
             <div class="collapsible-body">
                 <p>
+                    <i class="fas fa-utensils prefix grey-text text-darken-4"></i>
                     <strong>Type of Cuisine:</strong> {{ spot.category_name }} <br>
                 </p>
                 <p>
+                    <i class="fas fa-map-marker-alt prefix grey-text text-darken-4"></i>
                     <strong>Address:</strong> {{ spot.address }} <br>
                 </p>
                 <p>
+                    <i class="fas fa-align-left prefix grey-text text-darken-4"></i>
                     <strong>Description & What's Good Here:</strong><br>{{ spot.whats_good }}
                 </p>
                 <p>
+                    <i class="fas fa-calendar-alt prefix grey-text text-darken-4"></i>
                     <strong>Last Visited:</strong> {{ spot.visit_date }}
                 </p>
                 <p>
