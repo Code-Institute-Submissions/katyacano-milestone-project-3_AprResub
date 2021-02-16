@@ -10,9 +10,13 @@
                 <div class="input-field col s12">
                     <i class="fas fa-utensils prefix grey-text text-darken-4"></i>
                     <select id="category_name" name="category_name" class="validate" required>
-                        <option value="" disabled selected>Choose an option</option>
+                        <option value="" disabled>Choose an option</option>
                         {% for category in categories %}
-                            <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% if category.category_name == spot.category_name %}
+                                <option value="{{ category.category_name }}" selected>{{ category.category_name }}</option>
+                            {% else %}
+                                <option value="{{ category.category_name }}">{{ category.category_name }}</option>
+                            {% endif %}
                         {% endfor %}
                     </select>
                     <label for="category_name">Type of Cuisine</label>
@@ -23,7 +27,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-pencil-alt prefix grey-text text-darken-4"></i>
                     <input id="spot_name" name="spot_name" minlength="5" maxlength="50"
-                        type="text" class="validate" required>
+                        value="{{ spot.spot_name }}" type="text" class="validate" required>
                     <label for="spot_name">Location Name</label>
                 </div>
             </div>
@@ -32,7 +36,7 @@
                 <div class="input-field col s12">
                     <i class="fas fa-map-marker-alt prefix grey-text text-darken-4"></i>
                     <input id="address"  name="address" minlength="5" maxlength="100"
-                         type="text" class="validate" required>
+                        value="{{ spot.address }}" type="text" class="validate" required>
                     <label for="address">Address</label>
                 </div>
             </div>
@@ -40,7 +44,7 @@
             <div class="row">
                 <div class="input-field col s12">
                     <i class="fas fa-calendar-alt prefix grey-text text-darken-4"></i>
-                    <input id="visit_date" name="visit_date" type="text" class="datepicker validate" required>
+                    <input id="visit_date" name="visit_date" value="{{ spot.visit_date }}" type="text" class="datepicker validate" required>
                     <label for="visit_date">Date of Visit</label>
                 </div>
             </div>
@@ -49,7 +53,9 @@
                 <div class="input-field col s12">
                     <i class="fas fa-align-left prefix grey-text text-darken-4"></i>
                     <textarea id="whats_good" name="whats_good" minlength="5" maxlength="300"
-                        class="materialize-textarea validate" required></textarea>
+                        class="materialize-textarea validate" required>
+                    {{- spot.whats_good -}}
+                    </textarea>
                     <label for="whats_good">Description. What's good here?</label>
                 </div>
             </div>
@@ -59,7 +65,11 @@
                     <div class="switch">
                         <i class="fas fa-thumbs-up prefix grey-text text-darken-4"></i>
                         <label for="recommend">
-                            <input type="checkbox" id="recommend" name="recommend">
+                            {% if spot.recommend == "on" %}
+                                <input type="checkbox" id="recommend" name="recommend" checked>
+                            {% else %}
+                                <input type="checkbox" id="recommend" name="recommend">
+                            {% endif %}
                             <span class="lever"></span>
                             Highly Recommend!
                         </label>
@@ -69,6 +79,10 @@
             <!--submit button-->
             <div class="row">
                 <div class="col s12 center-align">
+                    <!--cancel button-->
+                    <a href="{{ url_for('get_spots') }}" class="btn-large red text-shadow">
+                        Cancel <i class="fas fa-times-circle right"></i>
+                    </a>
                     <button type="submit" class="btn-large orange darken-1 text-shadow">
                         Edit Spot <i class="fas fa-edit right"></i>
                     </button>
