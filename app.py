@@ -122,6 +122,21 @@ def add_spot():
 
 @app.route ("/edit_spot/<spot_id>", methods=["GET", "POST"])
 def edit_spot(spot_id):
+    if request.method == "POST":
+        recommend = "on" if request.form.get("recommend") else "off"
+        submit = {
+            "category_name": request.form.get("category_name"),
+            "spot_name": request.form.get("spot_name"),
+            "address": request.form.get("address"),
+            "visit_date": request.form.get("visit_date"),
+            "whats_good": request.form.get("whats_good"),
+            "recommend": recommend,
+            "created_by": session["user"]
+        }
+        mongo.db.spots.update({"_id": ObjectId(spot_id)}, submit)
+        flash("Spot Successfully Edited")
+        
+
     spot = mongo.db.spots.find_one({"_id": ObjectId(spot_id)})
 
     categories = mongo.db.categories.find().sort("category_name", 1)
