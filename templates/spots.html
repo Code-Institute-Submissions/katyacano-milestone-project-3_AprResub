@@ -35,7 +35,37 @@
     </ul>
   </div>
    
+    <!--header and intro-->
+    <h3 class="grey-text text-darken-4 center-align">Discover LA's Great Food Spots</h3>
+    <p> Looking for a great place to dine with friends? Maybe you need a date-night 
+        recommendation. Or you maybe you just want to discover all the great 
+        spots to eat around town. Search below and experience LA's vast dining landscape.
+    </p>
+    <p>
+        Be sure to contribute to this community by entering your own food spots too!
+    </p>
+
+    <!--search bar-->
+    <div class="row card-panel grey lighten-5">
+        <form action="{{ url_for('search') }}" method="post" class="col s12">
+            <div class="row valign-wrapper center-align">
+                <div class="input-field col s12 m8">
+                    <i class="fas fa-search prefix orange-text text-darken-4"></i>
+                    <input type="text" name="query" id="query" minlength="3" class="validate" required>
+                    <label for="query">Search Spots</label>
+                </div>
+                <div class="col s12 m4">
+                    <button type="submit" class="orange darken-1 btn text-shadow">
+                        <i class="fas fa-search left"></i> Search
+                    </button>
+                    <a href="{{ url_for('get_spots') }}" class="red btn text-shadow">Reset</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <!--spots collapsible-->
+    {% if spots|length >0 %}
     <ul class="collapsible popout">
         {% for spot in spots %}
         <li>
@@ -48,7 +78,7 @@
                     {% endif %}
                 </div>
                 <div class="col s9">
-                    <strong>{{ spot.spot_name }}</strong>
+                    <strong>{{ spot.spot_name }}    </strong>
                     {% if spot.recommend == "on" %}
                         <i class="fas fa-thumbs-up white-text text-lighten-2 tooltipped" data-position="right"
                             data-tooltip="Highly Recommend"></i>
@@ -79,5 +109,8 @@
         </li>
         {% endfor %}
     </ul>
+    {% else %}
+        <h3 class="grey-text text-darken-4 center-align">No Results Found</h3>
+    {% endif %}
 
 {% endblock %}

@@ -25,6 +25,13 @@ def get_spots():
     return render_template("spots.html", spots=spots)
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    spots = list(mongo.db.spots.find({"$text": {"$search": query}}))
+    return render_template("spots.html", spots=spots)
+
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
