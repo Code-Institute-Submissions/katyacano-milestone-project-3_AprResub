@@ -1,4 +1,4 @@
-import os 
+import os
 from flask import (
     Flask, flash, render_template,
     redirect, request, session, url_for)
@@ -95,7 +95,7 @@ def profile(username):
     if session["user"]:
         return render_template("profile.html", username=username)
 
-    return redirect(url_for("login")) 
+    return redirect(url_for("login"))
 
 
 @app.route("/logout")
@@ -108,6 +108,9 @@ def logout():
 
 @app.route("/add_spot", methods=["GET", "POST"])
 def add_spot():
+    if "user" not in session:
+        return redirect(url_for("login"))
+
     if request.method == "POST":
         recommend = "on" if request.form.get("recommend") else "off"
         spot = {
