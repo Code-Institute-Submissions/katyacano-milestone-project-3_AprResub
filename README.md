@@ -39,7 +39,7 @@
 <br/>
 
 ## Wireframe
-- View complete wireframe [here](.wireframe/foodscapela-wireframe.pdf)
+- View complete wireframe [here](https://github.com/katyacano/milestone-project-3/blob/master/wireframe/foodscapela-wireframe.pdf)
 
 <br/>
 <br/>
@@ -216,6 +216,14 @@
 - **Outcome:** Goal accomplished with Edit & Delete buttons displayed next to dining spots entered by user. 
 ### 6. A returning visitor should be able to view their app profile.
 - **Outcome:** Goal accomplished with Profile option on navigation bar.
+
+<br/>
+
+## Testing Responsiveness
+### Responsiveness of the app was tested using Google Dev tools. 
+- **Issues Found:** When viewing in mobile phone view, Search, Reset, Edit and Delete buttons were pushed off center and distorted.
+- **Fix:** Changed and deleted class for div assigned to Search and Reset buttons. Applied separate div to Edit/Delete buttons. 
+- **Outcome:** Buttons and corresponding text on the side is properly aligned. 
   
 <br/>
 <br/>

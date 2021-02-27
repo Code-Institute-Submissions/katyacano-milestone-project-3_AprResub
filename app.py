@@ -145,6 +145,7 @@ def edit_spot(spot_id):
         }
         mongo.db.spots.update({"_id": ObjectId(spot_id)}, submit)
         flash("Spot Successfully Edited")
+        return redirect(url_for("get_spots"))
 
     spot = mongo.db.spots.find_one({"_id": ObjectId(spot_id)})
     categories = mongo.db.categories.find().sort("category_name", 1)
