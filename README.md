@@ -101,6 +101,22 @@
 
 <br/>
 
+
+## Database and Database Schema
+MongoDB Atlas is the database used for storing user’s details and food spot review information. 
+There are three collections in the database- users, categories and spots. The schema is as follows:
+<td><img src="static/images/db_schema.jpg" alt="Database Schema Visual" style="width: 800px;"/></td>
+
+<br/>
+
+## Defensive Design (Security Features)
+- Werkzeug was used for password security. SPecifically: generate_password_hash and check_password_hash
+- Users are not able to edit or delete other user's entries into the directory.
+- Site prevents visitors from adding a new spot without logging in by checking if user is in session. Redirects to log in page if no user in session.
+
+
+<br/>
+
 # Testing
 
 ## Manual Testing
